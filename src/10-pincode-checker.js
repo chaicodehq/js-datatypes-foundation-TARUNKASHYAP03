@@ -23,7 +23,7 @@
  *   2. isValidParcelWeight(weight)
  *      - Number.isFinite() se check karo ki weight valid finite number hai
  *      - Weight positive bhi hona chahiye (> 0)
- *      - Infinity, NaN, ya non-number ke liye return false
+ *      - Infinity, NaN, ya non-number ke liye return false 
  *      - Example: isValidParcelWeight(2.5) => true
  *      - Example: isValidParcelWeight(Infinity) => false
  *      - Example: isValidParcelWeight("5") => false (string hai, number nahi!)
@@ -59,20 +59,49 @@
  */
 export function getDataType(value) {
   // Your code here
+  if(value===null){
+    return "null";
+  }
+
+  if(Array.isArray(value)){
+    return "array";
+  }
+  return typeof value;
 }
 
 export function isValidParcelWeight(weight) {
   // Your code here
+  if(typeof weight!=="number" || weight<=0 || Number.isNaN(weight) || !Number.isFinite(weight)){
+    return false
+  }
+
+  return Number.isFinite(weight);
 }
 
 export function isWholeNumber(value) {
   // Your code here
+  if(typeof value!=="number" || !Number.isInteger(value) || Number.isNaN(value) || !Number.isFinite(value)){
+    return false
+  }
+
+  return Number.isInteger(value)
 }
 
 export function isNotANumber(value) {
   // Your code here
+  if(Number.isNaN(value)){
+    return true;
+  }else{
+    return false;
+  }
 }
 
 export function isTruthy(value) {
   // Your code here
+  if(value===false || value===0 ||value==="" || value===null || value===undefined || Number.isNaN(value)){
+    return false;
+  }
+  else{
+    return true;
+  }
 }
